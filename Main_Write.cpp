@@ -25,7 +25,6 @@ void writeMemory(double memsize) {
 }
 
 int main() {
-    // Пример использования функции writeMemory
     double memsize_in_gb = 1.0; // Размер памяти в гигабайтах
     writeMemory(memsize_in_gb);
 

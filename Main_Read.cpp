@@ -26,7 +26,6 @@ void readMemory(double memsize) {
 }
 
 int main() {
-    // Пример использования функции readMemory
     double memsize_in_gb = 1.0; // Размер памяти в гигабайтах
     readMemory(memsize_in_gb);
 
