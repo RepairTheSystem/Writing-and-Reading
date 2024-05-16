@@ -1,5 +1,4 @@
 #include <iostream>
-#include <cstdlib>
 #include <chrono>
 #include <thread>
 
@@ -8,7 +7,7 @@ void writeMemory(double memsize) {
     size_t num_elements = static_cast<size_t>(memsize * 1024 * 1024 * sizeof(int));
 
     // Выделяем память
-    int* memory = reinterpret_cast<int*>(malloc(num_elements * sizeof(int)));
+    int* memory = new int[num_elements];
 
     // Размер шага в байтах для записи в память (4 килобайта)
     size_t step = 4 * 1024;
@@ -20,7 +19,7 @@ void writeMemory(double memsize) {
     }
 
     // Освобождаем память
-    free(memory);
+    delete[] memory;
     memory = nullptr;
 }
 

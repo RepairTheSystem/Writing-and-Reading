@@ -5,10 +5,10 @@
 
 void readMemory(double memsize) {
     // Вычисляем количество элементов int для чтения из памяти
-    size_t num_elements = static_cast<size_t>(memsize * 1024 * 1024 * sizeof(int));
+    size_t num_elements = static_cast<size_t>(memsize * 1024 * 1024 * 1024 * sizeof(int));
 
     // Выделяем память
-    int* memory = reinterpret_cast<int*>(malloc(num_elements * sizeof(int)));
+   int* memory = new int[num_elements];
 
     // Размер шага в байтах для чтения из памяти (4 килобайта)
     size_t step = 4 * 1024;
@@ -16,12 +16,11 @@ void readMemory(double memsize) {
     // Читаем данные из памяти
     for (size_t i = 0; i < num_elements; i += step / sizeof(int)) {
         int value = const_cast<const volatile int*>(memory)[i]; // Читаем значение из памяти
-        std::cout << "Read value: " << value << std::endl;
         std::this_thread::sleep_for(std::chrono::milliseconds(1)); // Задержка 1 миллисекунда
     }
 
     // Освобождаем память
-    free(memory);
+    delete[] memory;;
     memory = nullptr;
 }
 
